@@ -67,7 +67,6 @@ namespace aes
                                 _TFunction operation);
          size_t find_min_pos(size_t pos1, size_t pos2, size_t end_pos = std::string::npos);
          size_t find_max_pos(size_t pos1, size_t pos2, size_t end_pos = std::string::npos);
-         template <typename _TSingleton>
          int unit_test_main(int argc, char** argv, const char* title);
       }
 
@@ -282,7 +281,7 @@ void unit_test_##name::run_tests(test_assert& assert, list_type& input)
 #define main_test_function(title)                                                           \
    int main(int argc, char** argv)                                                          \
    {                                                                                        \
-      return aes::test::utils::unit_test_main<aes::test::test_suite_singleton>(argc, argv, title); \
+      return aes::test::utils::unit_test_main(argc, argv, title); \
    }
 
 
@@ -799,8 +798,7 @@ inline test_suite& aes::test::test_suite_singleton::get() noexcept
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // unit_test_main function implementation
 
-template <typename _TSingleton>
-inline int aes::test::utils::unit_test_main<_TSingleton>(int argc, char** argv, const char* title)
+inline int aes::test::utils::unit_test_main(int argc, char** argv, const char* title)
 {
    for (int i = 1; i < argc; ++i)
    {
@@ -810,13 +808,13 @@ inline int aes::test::utils::unit_test_main<_TSingleton>(int argc, char** argv, 
          ++str;
          if (*str == 'v' || *str == 'V')
          {
-            _TSingleton::get().test_logger().log_level(aes::test::log::level::verbose);
+            aes::test::test_suite_singleton::get().test_logger().log_level(aes::test::log::level::verbose);
          }
          else
          {
             std::stringstream ss;
             ss << "Error: invalid or unknown argument " << argv[i];
-            _TSingleton::get().test_logger().log_error(ss.str());
+            aes::test::test_suite_singleton::get().test_logger().log_error(ss.str());
             return -1;
          }
       }
@@ -824,11 +822,11 @@ inline int aes::test::utils::unit_test_main<_TSingleton>(int argc, char** argv, 
       {
          std::stringstream ss;
          ss << "Error: invalid or unknown argument " << argv[i];
-         _TSingleton::get().test_logger().log_error(ss.str());
+         aes::test::test_suite_singleton::get().test_logger().log_error(ss.str());
          return -1;
       }
    }
 
-   _TSingleton::get().run(title);
-   return int(_TSingleton::get().failed());
+   aes::test::test_suite_singleton::get().run(title);
+   return int(aes::test::test_suite_singleton::get().failed());
 }
