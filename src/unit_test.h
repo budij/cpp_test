@@ -47,6 +47,9 @@
 #define assert_vector_equal(message, expected, actual)   assert.vector_equal(__FILE__, __LINE__, message, expected, actual)
 #define assert_vector_empty(message, actual)             assert_size_t_equal(message, 0, actual.size())
 #define assert_ptr_equal(message, expected, actual)      assert_equal(message, ((void*)expected), ((void*)actual))
+#define assert_ptr_null(message, actual)                 assert_ptr_equal(message, nullptr, actual)
+#define assert_ptr_not_equal(message, expected, actual)  assert_not_equal(message, ((void*)expected), ((void*)actual))
+#define assert_ptr_not_null(message, actual)             assert_not_equal(message, nullptr, actual)
 
 ///////////////////////////////////////////////////////////////////////////////////
 // useful macros
