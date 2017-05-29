@@ -49,7 +49,7 @@
 #define assert_ptr_equal(message, expected, actual)      assert_equal(message, ((void*)expected), ((void*)actual))
 #define assert_ptr_null(message, actual)                 assert_ptr_equal(message, nullptr, actual)
 #define assert_ptr_not_equal(message, expected, actual)  assert_not_equal(message, ((void*)expected), ((void*)actual))
-#define assert_ptr_not_null(message, actual)             assert_not_equal(message, nullptr, actual)
+#define assert_ptr_not_null(message, actual)             assert_ptr_not_equal(message, nullptr, actual)
 
 ///////////////////////////////////////////////////////////////////////////////////
 // useful macros
