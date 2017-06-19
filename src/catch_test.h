@@ -27,7 +27,6 @@
 // assert macros
 #define assert_equal(message, expected, actual)          CHECK(expected == actual)
 #define assert_not_equal(message, expected, actual)      CHECK(expected != actual)
-#define assert_not_null(message, actual)                 CHECK((void*)nullptr == (void*)(actual))
 #define assert_uint64_t_equal(message, expected, actual) CHECK(uint64_t(expected) == uint64_t(actual))
 #define assert_uint32_t_equal(message, expected, actual) CHECK(uint32_t(expected) == uint32_t(actual))
 #define assert_enum_equal(message, expected, actual)     assert_uint32_t_equal(message, expected, actual)
@@ -57,7 +56,6 @@
 // require macros
 #define require_equal(message, expected, actual)          REQUIRE(expected == actual)
 #define require_not_equal(message, expected, actual)      REQUIRE(expected != actual)
-#define require_not_null(message, actual)                 REQUIRE((void*)nullptr == (void*)(actual))
 #define require_uint64_t_equal(message, expected, actual) REQUIRE(uint64_t(expected) == uint64_t(actual))
 #define require_uint32_t_equal(message, expected, actual) REQUIRE(uint32_t(expected) == uint32_t(actual))
 #define require_enum_equal(message, expected, actual)     require_uint32_t_equal(message, expected, actual)
