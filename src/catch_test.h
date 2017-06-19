@@ -61,7 +61,7 @@
 #define require_uint64_t_equal(message, expected, actual) REQUIRE(uint64_t(expected), uint64_t(actual))
 #define require_uint32_t_equal(message, expected, actual) REQUIRE(uint32_t(expected), uint32_t(actual))
 #define require_enum_equal(message, expected, actual)     require_uint32_t_equal(message, expected, actual)
-#define require_size_t_equal(message, expected, actual)   REQUIRE(message, size_t(expected), size_t(actual))
+#define require_size_t_equal(message, expected, actual)   REQUIRE(size_t(expected) == size_t(actual))
 #define require_is_true(message, actual)                  REQUIRE((actual))
 #define require_is_false(message, actual)                 REQUIRE_FALSE((actual))
 #define require_pass(message)                             SUCCEED(message)
@@ -69,7 +69,7 @@
 #define require_string_empty(message, actual)             require_equal(message, std::string(), actual)
 #define require_vector_equal(message, expected, actual)   \
    require_size_t_equal(std::string(message) + std::string(": Size equals"), expected.size(), actual.size()); \
-   if (expected.size(), actual.size())                    \
+   if (expected.size() == actual.size())                  \
    {                                                      \
       for (size_t i = 0; i < expected.size(); i++)        \
       {                                                   \
