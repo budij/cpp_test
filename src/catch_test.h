@@ -31,7 +31,7 @@
 #define assert_uint64_t_equal(message, expected, actual) CHECK(uint64_t(expected), uint64_t(actual))
 #define assert_uint32_t_equal(message, expected, actual) CHECK(uint32_t(expected), uint32_t(actual))
 #define assert_enum_equal(message, expected, actual)     assert_uint32_t_equal(message, expected, actual)
-#define assert_size_t_equal(message, expected, actual)   CHECK(message, size_t(expected), size_t(actual))
+#define assert_size_t_equal(message, expected, actual)   CHECK(size_t(expected) == size_t(actual))
 #define assert_is_true(message, actual)                  CHECK((actual))
 #define assert_is_false(message, actual)                 CHECK_FALSE((actual))
 #define assert_pass(message)                             SUCCEED(message)
@@ -39,7 +39,7 @@
 #define assert_string_empty(message, actual)             assert_equal(message, std::string(), actual)
 #define assert_vector_equal(message, expected, actual)   \
    assert_size_t_equal(std::string(message) + std::string(": Size equals"), expected.size(), actual.size()); \
-   if (expected.size(), actual.size())                   \
+   if (expected.size() == actual.size())                 \
    {                                                     \
       for (size_t i = 0; i < expected.size(); i++)       \
       {                                                  \
