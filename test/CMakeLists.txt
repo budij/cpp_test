@@ -1,7 +1,9 @@
 PROJECT(cpp_test)
 
 # SET up files
-SET (${PROJECT_NAME}_headers  ../src/unit_test.h)
+SET (${PROJECT_NAME}_headers  ../src/unit_test.h
+                              ../src/catch_test.h
+                              ../3rdparty/catch/single_include/catch.hpp)
 SET (${PROJECT_NAME}_sources  program.cpp
                               logger_tests.cpp
                               util_methods_tests.cpp
@@ -19,3 +21,4 @@ SET_PROPERTY(TARGET ${PROJECT_NAME} PROPERTY FOLDER tests)
 # include directories
 # -------------------
 INCLUDE_DIRECTORIES(../src)
+INCLUDE_DIRECTORIES(../3rdparty/catch/single_include)
