@@ -35,7 +35,7 @@
 #define assert_is_false(message, actual)                 CHECK_FALSE((actual))
 #define assert_pass(message)                             SUCCEED(message)
 #define assert_fail(message)                             FAIL(message)
-#define assert_string_empty(message, actual)             assert_equal(message, actual.empty())
+#define assert_string_empty(message, actual)             assert_is_true(message, actual.empty())
 #define assert_vector_equal(message, expected, actual)   \
    assert_size_t_equal(std::string(message) + std::string(": Size equals"), expected.size(), actual.size()); \
    if (expected.size() == actual.size())                 \
@@ -64,7 +64,7 @@
 #define require_is_false(message, actual)                 REQUIRE_FALSE((actual))
 #define require_pass(message)                             SUCCEED(message)
 #define require_fail(message)                             FAIL(message)
-#define require_string_empty(message, actual)             require_equal(message, actual.empty())
+#define require_string_empty(message, actual)             require_is_true(message, actual.empty())
 #define require_vector_equal(message, expected, actual)   \
    require_size_t_equal(std::string(message) + std::string(": Size equals"), expected.size(), actual.size()); \
    if (expected.size() == actual.size())                  \
